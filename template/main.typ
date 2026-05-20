@@ -5,7 +5,11 @@
   title: "Velmi zajímavá studie",
   subtitle: "Bakalářská práce",
   author: "Jan Novák",
-  supervisor: "PhD. Jiří Dvořák",
+  details: (
+    "Vedoucí": "Prof. Jiří Dvořák",
+    "Školitel-specialista": "František Vomáčka, Ph.D.",
+    "Studijní program": "Enterprise architektury",
+  ),
   date: "Květen 2026",
   abstract-cz: [
     #lorem(45)
@@ -14,7 +18,6 @@
     #lorem(40)
   ],
   branch: "Obor Softwarové inženýrství a technologie",
-  program: "Enterprise architektury",
   toc-title: "Obsah",
   logo: image("assets/cvut-logo.svg"),
 )

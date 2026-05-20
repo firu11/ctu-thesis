@@ -8,12 +8,11 @@
   title: "REPORT TITLE",
   subtitle: "REPORT SUBTITLE",
   author: "AUTHOR NAME",
-  supervisor: "SUPERVISOR NAME",
+  details: (),
   username: "STUDENT USERNAME",
   date: "DATE OF SUBMISSION",
   university: defaults.university,
   branch: "YOUR STUDY BRANCH",
-  program: "YOUR STUDY PROGRAM",
   logo: none,
 ) = {
   page(
@@ -36,20 +35,35 @@
     ]
 
     // main title block vertically centered
-    #align(horizon, block[
-      #text(title, size: 26pt, weight: "bold")
-      #v(-1.5em)
-      #text(subtitle, size: 18pt)
-    ])
+    #v(16em)
+    #text(title, size: 24pt, weight: "bold")
+    #v(-1.5em)
+    #text(subtitle, size: 18pt)
+    #v(5em)
+    #text(author, 18pt)
 
     // author and year information at the bottom
     #align(bottom, block[
-      #text(18pt)[#author]
-      #v(4em)
-      #text(15pt)[Vedoucí: #supervisor]\
-      #text(15pt)[Studijní program: #program]
+      #if details.len() > 0 {
+        align(center)[
+          #set text(size: 16pt)
+          #grid(
+            columns: (auto, auto),
+            gutter: 0.8em,
+            column-gutter: 0.5em,
+            align: (right, left),
+            ..details
+              .pairs()
+              .map(((klic, hodnota)) => (
+                [*#klic:*],
+                [#hodnota],
+              ))
+              .flatten()
+          )
+        ]
+      }
       #v(0.5em)
-      #text(15pt)[#date]
+      #text(date, 14pt)
     ])
   ]
 }
@@ -100,13 +114,12 @@
   title: "REPORT TITLE",
   subtitle: "REPORT SUBTITLE",
   author: "AUTHOR NAME",
-  supervisor: "SUPERVISOR NAME",
+  details: (),
   date: "DATE OF SUBMISSION",
   abstract-cz: "ABSTRACT TEXT CZ",
   abstract-en: "ABSTRACT TEXT EN",
   university: defaults.university,
   branch: "YOUR STUDY BRANCH",
-  program: "YOUR STUDY PROGRAM",
   toc-title: "Obsah",
   logo: none,
   body,
@@ -119,10 +132,9 @@
     title: title,
     subtitle: subtitle,
     author: author,
-    supervisor: supervisor,
+    details: details,
     date: date,
     branch: branch,
-    program: program,
     logo: logo,
   )
   pagebreak()
