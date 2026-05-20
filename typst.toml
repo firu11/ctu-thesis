@@ -1,0 +1,16 @@
+[package]
+name = "ctu-thesis"
+version = "0.0.1"
+compiler = "0.11.0"
+authors = ["Filip Růžička <https://firu.dev>"]
+repository = "https://github.com/firu11/ctu-thesis"
+license = "MIT"
+description = "A thesis template at ČVUT (CTU in Prague)."
+entrypoint = "lib.typ"
+categories = ["thesis", "report", "paper"]
+keywords = ["cvut", "ctu", "czech-technical-university", "prague", "thesis", "report", "paper", "education", "engineering"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

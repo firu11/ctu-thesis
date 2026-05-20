@@ -1,0 +1,151 @@
+#import "../core.typ": ctu-layout
+
+#let defaults = (
+  university: "Fakulta elektrotechnická, ČVUT v Praze",
+)
+
+#let fel-cover(
+  title: "REPORT TITLE",
+  subtitle: "REPORT SUBTITLE",
+  author: "AUTHOR NAME",
+  supervisor: "SUPERVISOR NAME",
+  username: "STUDENT USERNAME",
+  date: "DATE OF SUBMISSION",
+  university: defaults.university,
+  branch: "YOUR STUDY BRANCH",
+  program: "YOUR STUDY PROGRAM",
+  logo: none,
+) = {
+  page(
+    margin: 3cm,
+    numbering: none,
+  )[
+    #set align(center)
+
+    // logo + faculty/branch info
+    #stack(dir: ltr, spacing: 1.3em)[
+      #logo
+    ][
+      #v(1.5em)
+      #set align(left)
+      #stack(dir: ttb, spacing: 12pt)[
+        #text(university, size: 20pt, weight: "bold")
+      ][
+        #text(branch, size: 16pt)
+      ]
+    ]
+
+    // main title block vertically centered
+    #align(horizon, block[
+      #text(title, size: 26pt, weight: "bold")
+      #v(-1.5em)
+      #text(subtitle, size: 18pt)
+    ])
+
+    // author and year information at the bottom
+    #align(bottom, block[
+      #text(18pt)[#author]
+      #v(4em)
+      #text(15pt)[Vedoucí: #supervisor]\
+      #text(15pt)[Studijní program: #program]
+      #v(0.5em)
+      #text(15pt)[#date]
+    ])
+  ]
+}
+
+#let fel-toc(
+  title: "TABLE OF CONTENTS TITLE",
+) = {
+  // style headings based on level
+  show outline.entry.where(level: 1): it => {
+    v(12pt, weak: true) // space above
+    text(it, weight: 900, size: 13pt)
+  }
+  show outline.entry.where(level: 2): it => {
+    v(4pt) // space above
+    text(it, weight: 500, size: 12pt)
+  }
+  show outline.entry.where(level: 3): it => {
+    v(2pt) // space above
+    text(it, weight: 300, size: 11pt)
+  }
+  show outline.entry.where(level: 4): it => {
+    v(2pt) // space above
+    text(it, weight: 300, size: 10pt)
+  }
+
+  page(
+    numbering: none,
+  )[
+    #align(center, heading(level: 1, outlined: false, numbering: none)[#title])
+    #v(14pt)
+    #outline(title: none, indent: 1.6em)
+  ]
+}
+
+// #let prohlaseni(
+//   author: "AUTHOR NAME",
+//   date: "DATE OF SUBMISSION",
+// ) = {
+//   page(
+//     margin: 3cm,
+//     numbering: none,
+//   )[
+//     Prohlaseni
+//   ]
+// }
+
+#let fel-thesis(
+  title: "REPORT TITLE",
+  subtitle: "REPORT SUBTITLE",
+  author: "AUTHOR NAME",
+  supervisor: "SUPERVISOR NAME",
+  date: "DATE OF SUBMISSION",
+  abstract-cz: "ABSTRACT TEXT CZ",
+  abstract-en: "ABSTRACT TEXT EN",
+  university: defaults.university,
+  branch: "YOUR STUDY BRANCH",
+  program: "YOUR STUDY PROGRAM",
+  toc-title: "Obsah",
+  logo: none,
+  body,
+) = {
+  // global cvut layout
+  show: ctu-layout.with(title: title, author: author)
+
+  // cover page
+  fel-cover(
+    title: title,
+    subtitle: subtitle,
+    author: author,
+    supervisor: supervisor,
+    date: date,
+    branch: branch,
+    program: program,
+    logo: logo,
+  )
+  pagebreak()
+
+  // abstracts
+  align(center)[
+    #heading(level: 1, outlined: false, numbering: none)[Abstrakt]
+    #abstract-cz
+
+    #v(2em)
+
+    #heading(level: 1, outlined: false, numbering: none)[Abstract]
+    #abstract-en
+  ]
+  pagebreak()
+
+  // table of contents
+  fel-toc(title: toc-title)
+  pagebreak()
+
+  // reset page numbering
+  set page(numbering: "1")
+  counter(page).update(1)
+
+  body // the actual thesis content
+}
