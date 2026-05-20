@@ -2,9 +2,17 @@
   title: "",
   author: "",
   lang: "cs",
+  gutter: false, // vázání
   body,
 ) = {
   set document(title: title, author: author)
+  set page(
+    margin: if gutter {
+      (top: 25mm, bottom: 25mm, inside: 35mm, outside: 20mm)
+    } else {
+      (x: 25mm, y: 25mm)
+    },
+  )
   set text(lang: lang, region: "cz", size: 12pt, font: "libertinus serif")
 
   set heading(numbering: "1.")

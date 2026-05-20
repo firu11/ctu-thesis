@@ -18,7 +18,6 @@
     #lorem(40)
   ],
   branch: "Obor Softwarové inženýrství a technologie",
-  toc-title: "Obsah",
   logo: image("assets/cvut-logo.svg"),
 )
 

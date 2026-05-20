@@ -2,6 +2,7 @@
 
 #let defaults = (
   university: "Fakulta elektrotechnická, ČVUT v Praze",
+  toc-title: "Obsah",
 )
 
 #let fel-cover(
@@ -16,7 +17,6 @@
   logo: none,
 ) = {
   page(
-    margin: 3cm,
     numbering: none,
   )[
     #set align(center)
@@ -69,7 +69,7 @@
 }
 
 #let fel-toc(
-  title: "TABLE OF CONTENTS TITLE",
+  title: defaults.toc-title,
 ) = {
   // style headings based on level
   show outline.entry.where(level: 1): it => {
@@ -120,12 +120,13 @@
   abstract-en: "ABSTRACT TEXT EN",
   university: defaults.university,
   branch: "YOUR STUDY BRANCH",
-  toc-title: "Obsah",
+  toc-title: defaults.toc-title,
   logo: none,
+  gutter: false,
   body,
 ) = {
   // global cvut layout
-  show: ctu-layout.with(title: title, author: author)
+  show: ctu-layout.with(title: title, author: author, gutter: gutter)
 
   // cover page
   fel-cover(
