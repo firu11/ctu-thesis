@@ -1,5 +1,4 @@
-// #import "@preview/cvut-thesis:0.0.1": fel-thesis
-#import "../src/faculties/fel.typ": fel-thesis
+#import "@preview/ctu-thesis:0.0.1": fel-thesis
 
 #show: fel-thesis.with(
   title: "Velmi zajímavá studie",

@@ -1,13 +1,8 @@
-// ČVUT (CTU in Prague) Report Template for term projects etc.
-// TODO
+// Template for qualification thesis at CTU in Prague.
 
-#import "src/core.typ": thesis
-#import "src/faculties/fel.typ": fel-config
+#import "src/faculties/fel.typ": fel-cover, fel-thesis, fel-toc
 
-#let fel-thesis(config: (), meta: (), body) = {
-  thesis(
-    config: fel-config + config,
-    meta: meta,
-    body
-  )
-}
+// re-export
+#let fel-thesis = fel-thesis
+#let fel-cover = fel-cover
+#let fel-toc = fel-toc
