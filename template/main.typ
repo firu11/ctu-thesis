@@ -16,12 +16,16 @@
   abstract-en: [
     #lorem(40)
   ],
+  keywords-cz: ("pes", "a", "kočička"),
+  keywords-en: ("dog", "and", "cat"),
   branch: "Obor Softwarové inženýrství a technologie",
   logo: image("assets/cvut-logo.svg"),
 )
 
 // Layout/style overwrites possible here...
 // Example: #set text(20pt)
+
+// Typst documentation: https://typst.app/docs
 
 // ----------------------- The actual content -------------------------
 

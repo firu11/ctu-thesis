@@ -118,6 +118,8 @@
   date: "DATE OF SUBMISSION",
   abstract-cz: "ABSTRACT TEXT CZ",
   abstract-en: "ABSTRACT TEXT EN",
+  keywords-cz: ("KEYWORDS", "CZ"),
+  keywords-en: ("KEYWORDS", "EN"),
   university: defaults.university,
   branch: "YOUR STUDY BRANCH",
   toc-title: defaults.toc-title,
@@ -144,11 +146,15 @@
   align(center)[
     #heading(level: 1, outlined: false, numbering: none)[Abstrakt]
     #abstract-cz
+    #heading(level: 1, outlined: false, numbering: none)[Klíčová slova]
+    #keywords-cz.join(", ")
 
     #v(2em)
 
     #heading(level: 1, outlined: false, numbering: none)[Abstract]
     #abstract-en
+    #heading(level: 1, outlined: false, numbering: none)[Keywords]
+    #keywords-en.join(", ")
   ]
   pagebreak()
 
