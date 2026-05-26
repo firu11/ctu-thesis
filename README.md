@@ -122,5 +122,9 @@ ctu-thesis/
       └─ iso690-numeric-brackets-cs.csl
 ```
 
+## Asset Credits
+- **Logo:** [ČVUT Logo & Graphic Manual](https://www.cvut.cz/logo-a-graficky-manual)
+- **Citation Style:** [ISO 690 (Numeric, Brackets, Czech) CSL Style](https://github.com/citation-style-language/styles/blob/master/iso690-numeric-brackets-cs.csl)
+
 ## License
 MIT - see [`LICENSE`](LICENSE).
