@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Package: @preview/ctu-thesis" src="https://img.shields.io/badge/package-@preview%2Fctu--thesis-239dad?logo=typst&logoColor=white">
+  <!--<img alt="Package: @preview/ctu-thesis" src="https://img.shields.io/badge/package-@preview%2Fctu--thesis-239dad?logo=typst&logoColor=white">-->
   <img alt="Typst 0.11+" src="https://img.shields.io/badge/typst-0.11%2B-239dad?logo=typst&logoColor=white">
   <img alt="Status: WIP" src="https://img.shields.io/badge/status-WIP-ffb000">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
@@ -18,7 +18,7 @@
 `ctu-thesis` is an unofficial Typst template for qualification theses at the Czech Technical University in Prague. It currently focuses on the Faculty of Electrical Engineering (`fel-thesis`).
 
 > [!IMPORTANT]
-> This template is still young. Always verify the final PDF against your faculty's current thesis requirements before submitting.
+> This template is still WIP. Always verify the final PDF against your faculty's current thesis requirements before submitting.
 
 ## Features
 - Nice cover page with logo, study branch, thesis type, author, supervisor/details grid, and submission date.
@@ -29,14 +29,16 @@
 - Template project with CTU logo and ISO690-numeric citation style.
 
 ## Quick start
-### Typst Universe (not yet!)
+> [!IMPORTANT]
+> This package isn't published to the Typst Universe yet, so it can't be imported like this as of this time!
+
 Initialize a fresh project with:
 ```sh
 typst init @preview/ctu-thesis:0.0.1 my-thesis
 cd my-thesis
 typst watch main.typ
 ```
-Typst will copy the starter project and keep recompiling the PDF whenever you save `main.typ`.
+Typst will copy the starter project (from the `template` folder) and keep recompiling the PDF whenever you make changes.
 
 ## Usage
 A minimal thesis starts with a single `show` rule:
