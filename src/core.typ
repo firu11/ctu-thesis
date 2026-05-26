@@ -13,7 +13,7 @@
       (x: 25mm, y: 25mm)
     },
   )
-  set text(lang: lang, region: "cz", size: 12pt, font: "libertinus serif")
+  set text(lang: lang, region: "cz", size: 11pt, font: "libertinus serif")
 
   set heading(numbering: "1.")
   show heading: set block(below: 0.8em)
