@@ -143,19 +143,27 @@
   pagebreak()
 
   // abstracts
-  align(center)[
-    #heading(level: 1, outlined: false, numbering: none)[Abstrakt]
-    #abstract-cz
-    #heading(level: 1, outlined: false, numbering: none)[Klíčová slova]
-    #keywords-cz.join(", ")
+  grid(
+    columns: 2,
+    gutter: 2em,
+    [
+      #heading(level: 1, outlined: false, numbering: none)[Abstrakt]
+      #abstract-cz
+    ],
+    [
+      #heading(level: 1, outlined: false, numbering: none)[Abstract]
+      #abstract-en
+    ],
 
-    #v(2em)
-
-    #heading(level: 1, outlined: false, numbering: none)[Abstract]
-    #abstract-en
-    #heading(level: 1, outlined: false, numbering: none)[Keywords]
-    #keywords-en.join(", ")
-  ]
+    [
+      #heading(level: 1, outlined: false, numbering: none)[Klíčová slova]
+      #keywords-cz.join(", ")
+    ],
+    [
+      #heading(level: 1, outlined: false, numbering: none)[Keywords]
+      #keywords-en.join(", ")
+    ],
+  )
   pagebreak()
 
   // table of contents

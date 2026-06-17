@@ -11,7 +11,7 @@
   ),
   date: "Květen 2026",
   abstract-cz: [
-    #lorem(45)
+    #lorem(55)
   ],
   abstract-en: [
     #lorem(40)
