@@ -98,53 +98,40 @@
   ]
 }
 
-// #let prohlaseni(
-//   author: "AUTHOR NAME",
-//   date: "DATE OF SUBMISSION",
-// ) = {
-//   page(
-//     margin: 3cm,
-//     numbering: none,
-//   )[
-//     Prohlaseni
-//   ]
-// }
-
-#let fel-thesis(
-  title: "REPORT TITLE",
-  subtitle: "REPORT SUBTITLE",
+#let fel-declaration(
   author: "AUTHOR NAME",
-  details: (),
-  date: "DATE OF SUBMISSION",
+  sign-date: datetime.today(),
+) = {
+  heading(level: 1, outlined: false, numbering: none)[Prohlášení]
+  [
+    Prohlašuji, že jsem závěrečnou práci vypracoval/a samostatně a uvedl/a veškeré použité
+    informační zdroje v souladu s Metodickým pokynem o dodržování etických principů při
+    přípravě vysokoškolských závěrečných prací a Rámcovými pravidly používání umělé
+    inteligence na ČVUT pro studijní a pedagogické účely v Bc a Mgr studiu.
+
+    Prohlašuji, že jsem v průběhu příprav a psaní závěrečné práce použil/a nástroje umělé
+    inteligence. Vygenerovaný obsah jsem ověřil/a. Stvrzuji, že jsem si vědom/a, že za obsah
+    závěrečné práce plně zodpovídám.
+
+    #v(2em)
+
+    v Praze dne #sign-date.display("[day]. [month]. [year]")
+
+    #align(right)[
+      ........................................\
+      #author
+    ]
+  ]
+}
+
+#let fel-abstracts(
   abstract-cz: "ABSTRACT TEXT CZ",
   abstract-en: "ABSTRACT TEXT EN",
   keywords-cz: ("KEYWORDS", "CZ"),
   keywords-en: ("KEYWORDS", "EN"),
-  university: defaults.university,
-  branch: "YOUR STUDY BRANCH",
-  toc-title: defaults.toc-title,
-  logo: none,
-  gutter: false,
-  body,
 ) = {
-  // global cvut layout
-  show: ctu-layout.with(title: title, author: author, gutter: gutter)
-
-  // cover page
-  fel-cover(
-    title: title,
-    subtitle: subtitle,
-    author: author,
-    details: details,
-    date: date,
-    branch: branch,
-    logo: logo,
-  )
-  pagebreak()
-
-  // abstracts
   grid(
-    columns: 2,
+    columns: (1fr, 1fr),
     gutter: 2em,
     [
       #heading(level: 1, outlined: false, numbering: none)[Abstrakt]
@@ -164,11 +151,66 @@
       #keywords-en.join(", ")
     ],
   )
-  pagebreak()
+}
 
-  // table of contents
-  fel-toc(title: toc-title)
-  pagebreak()
+#let fel-thesis(
+  title: "REPORT TITLE",
+  subtitle: "REPORT SUBTITLE",
+  author: "AUTHOR NAME",
+  details: (),
+  date: "DATE OF SUBMISSION",
+  sign-date: datetime.today(),
+  abstract-cz: "ABSTRACT TEXT CZ",
+  abstract-en: "ABSTRACT TEXT EN",
+  keywords-cz: ("KEYWORDS", "CZ"),
+  keywords-en: ("KEYWORDS", "EN"),
+  university: defaults.university,
+  branch: "YOUR STUDY BRANCH",
+  toc-title: defaults.toc-title,
+  logo: none,
+  gutter: false,
+  body,
+) = {
+  // global cvut layout
+  show: ctu-layout.with(title: title, author: author, gutter: gutter)
+
+  // first pages scope
+  {
+    set page(
+      margin: 3cm,
+    )
+
+    // cover page
+    fel-cover(
+      title: title,
+      subtitle: subtitle,
+      author: author,
+      details: details,
+      date: date,
+      branch: branch,
+      logo: logo,
+    )
+    pagebreak()
+
+    // declaration of authorship
+    fel-declaration(
+      author: author,
+    )
+    pagebreak()
+
+    // abstracts
+    fel-abstracts(
+      abstract-cz: abstract-cz,
+      abstract-en: abstract-en,
+      keywords-cz: keywords-cz,
+      keywords-en: keywords-en,
+    )
+    pagebreak()
+
+    // table of contents
+    fel-toc(title: toc-title)
+    pagebreak()
+  }
 
   // reset page numbering
   set page(numbering: "1")
